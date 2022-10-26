@@ -6,7 +6,7 @@ const ShowEmployees = () => {
   const [employees, setEmployees] = useState([]);
 
   const getEmployees = () => {
-    axios.get('http://127.0.0.1:5000/getEmployees')
+    axios.get('http://127.0.0.1:5000/api/employee/getAll')
       .then(res => {
         console.log(res);
         if(res.status === 200)

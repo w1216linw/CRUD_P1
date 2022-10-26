@@ -32,7 +32,7 @@ const AddEmployee = () => {
   }
 
   const handleSubmit = () => {
-    axios.post('http://127.0.0.1:5000/create', {name, age, country, position, wage})
+    axios.post('http://127.0.0.1:5000/api/employee/create', {name, age, country, position, wage})
     .then( () => {
       console.log("Success");
       setAge('');
