@@ -1,33 +1,27 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEmpContext } from "../context/employeeContext";
 
-const ShowEmployees = () => {
+const ShowEmployees = ({ setEmployee, setDetailsToggle }) => {
 
-  const [employees, setEmployees] = useState([]);
+  const {filterEmployees} = useEmpContext();
 
-  const getEmployees = () => {
-    axios.get('http://127.0.0.1:5000/api/employee/getAll')
-      .then(res => {
-        console.log(res);
-        if(res.status === 200)
-          setEmployees(res.data);
-      })
-      .catch(err => console.log(err))
-  };
-
-  useEffect(() => {
-    getEmployees();
-    console.log(employees);
-  },[])
+  const handleMore = (employee) => {
+    setEmployee(employee);
+    setDetailsToggle(true);
+  }
 
   return (
     <div>
       <ul>
         {
-          (employees.length > 0) && employees.map(employee => {
+          (filterEmployees.length > 0) && filterEmployees.map(employee => {
             return (
-              <li key={employee.id}>
+              <li className="single-emp" key={employee.id}>
                 <p>{employee.name}</p>
+                <p>{employee.position}</p>
+                <div className="emp-btn">
+                  <button onClick={() => handleMore(employee)}>More</button>
+                  <button>Delete</button>
+                </div>
               </li>
             )
           })

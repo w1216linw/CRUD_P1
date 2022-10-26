@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios'
+import { useEmpContext } from '../context/employeeContext';
 
 const AddEmployee = () => {
 
+  const { employees, setEmployees } = useEmpContext();
   const [name, setName] = useState("");
   const [age, setAge] = useState('');
   const [country, setCountry] = useState("");
@@ -34,6 +36,7 @@ const AddEmployee = () => {
   const handleSubmit = () => {
     axios.post('http://127.0.0.1:5000/api/employee/create', {name, age, country, position, wage})
     .then( () => {
+      setEmployees([...employees , {name, age, country, position, wage}])
       console.log("Success");
       setAge('');
       setCountry('');
