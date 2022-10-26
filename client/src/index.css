@@ -1,0 +1,15 @@
+.em-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 10rem;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
