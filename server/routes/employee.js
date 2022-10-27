@@ -26,7 +26,7 @@ router.post('/create' , (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.send("Values Inserted")
+      res.send("Employee Inserted")
     }
   });
 });
@@ -36,9 +36,17 @@ router.delete('/delete/:id', (req, res) => {
   // console.log(typeof +req.params.id);
   db.query(`delete from employees where id = ?`, [req.params.id], (err, result) => {
     if (err) console.log(err);
-    else res.send("Values Deleted");
+    else res.send("Employee Deleted");
   })
 });
 
+//update single employee
+router.patch('/update', (req, res) => {
+  const {id, name, age, country, wage, position} = req.body;
+  db.query(`update employees set name = ?, age = ?, country = ?, wage = ?, position = ? where id = ?`, [name, age, country, wage, position,id], (err, result) => {
+    if (err) console.log(err);
+    else res.send("Employee Updated")
+  })
+})
 
 module.exports = router
