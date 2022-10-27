@@ -11,6 +11,7 @@ router.get('/getAll', (req, res) => {
     }
   })
 })
+
 // add a single employee
 router.post('/create' , (req, res) => {
   const name = req.body.name;
@@ -29,5 +30,15 @@ router.post('/create' , (req, res) => {
     }
   });
 });
+
+//delete single employee
+router.delete('/delete/:id', (req, res) => {
+  // console.log(typeof +req.params.id);
+  db.query(`delete from employees where id = ?`, [req.params.id], (err, result) => {
+    if (err) console.log(err);
+    else res.send("Values Deleted");
+  })
+});
+
 
 module.exports = router
