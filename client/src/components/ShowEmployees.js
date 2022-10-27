@@ -1,8 +1,9 @@
+
 import { useEmpContext } from "../context/employeeContext";
 
 const ShowEmployees = ({ setEmployee, setDetailsToggle }) => {
 
-  const {filterEmployees} = useEmpContext();
+  const {filterEmployees, handleDeleteEmployee} = useEmpContext();
 
   const handleMore = (employee) => {
     setEmployee(employee);
@@ -19,8 +20,8 @@ const ShowEmployees = ({ setEmployee, setDetailsToggle }) => {
                 <p>{employee.name}</p>
                 <p>{employee.position}</p>
                 <div className="emp-btn">
-                  <button onClick={() => handleMore(employee)}>More</button>
-                  <button>Delete</button>
+                  <button onClick={() => handleMore(employee) }>More</button>
+                  <button onClick={() => handleDeleteEmployee(employee.id) }>Delete</button>
                 </div>
               </li>
             )
