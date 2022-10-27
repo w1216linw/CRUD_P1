@@ -14,8 +14,7 @@ const EmpProvider = ({children}) => {
   })
 
   const handleDeleteEmployee = (id) => {
-
-    setEmployees(employees.filter(emp => emp.id != id));
+    setEmployees(employees.filter(emp => emp.id !== id));
 
     axios.delete(`http://127.0.0.1:5000/api/employee/delete/${id}`)
     .then(res => {
@@ -38,10 +37,20 @@ const EmpProvider = ({children}) => {
   },[])
 
   return (
-    <EmployeeContext.Provider value={{ filterEmployees, employees, setEmployees, inputRef, filterQuery, setFilterQuery, handleDeleteEmployee}}>
+    <EmployeeContext.Provider
+      value={{
+        filterEmployees,
+        employees,
+        setEmployees,
+        inputRef,
+        filterQuery,
+        setFilterQuery,
+        handleDeleteEmployee,
+      }}
+    >
       {children}
     </EmployeeContext.Provider>
-  )
+  );
 }
 
 const useEmpContext = () => {

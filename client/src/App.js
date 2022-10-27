@@ -26,7 +26,7 @@ function App() {
       }
       <ShowEmployees setEmployee={setEmployee} setDetailsToggle={setDetailsToggle} />
       {
-        detailsToggle && <EmployeeDetails employee={employee} setDetailsToggle={setDetailsToggle}/>
+        detailsToggle && <EmployeeDetails  employee={employee} setEmployee={setEmployee} setDetailsToggle={setDetailsToggle}/>
       }
     </div>
   )
