@@ -1,2 +1,2 @@
 # CRUD_P1
-  # simple application for storing employees' info.
+  # simple application using sql and react to store employees' info.
